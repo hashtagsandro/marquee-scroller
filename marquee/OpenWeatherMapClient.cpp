@@ -41,7 +41,7 @@ void OpenWeatherMapClient::updateWeather() {
     Serial.println(weathers[0].error);
     return;
   }
-  String apiGetData = "GET /data/2.5/group?id=" + myCityIDs + "&units=" + units + "&cnt=1&APPID=" + myApiKey + " HTTP/1.1";
+  String apiGetData = "GET /data/2.5/group?id=" + myCityIDs + "&units=" + units + "&cnt=1&APPID=" + myApiKey + "&lang=it" + " HTTP/1.1";
 
   Serial.println("Getting Weather Data");
   Serial.println(apiGetData);
@@ -238,7 +238,7 @@ String OpenWeatherMapClient::getDirectionRounded(int index)
 String OpenWeatherMapClient::getDirectionText(int index) {
   int num = getDirectionRounded(index).toInt();
   int val = floor((num / 22.5) + 0.5);
-  String arr[] = {"N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"};
+  String arr[] = {"N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSO", "SO", "OSO", "O", "ONO", "NO", "NNO"};
   return arr[(val % 16)];
 }
 
@@ -293,25 +293,25 @@ String OpenWeatherMapClient::getWeekDay(int index, float offset) {
     day = (((epoc + (3600 * (int)offset)) / 86400) + 4) % 7;
     switch (day) {
       case 0:
-        rtnValue = "Sunday";
+        rtnValue = "Dom";
         break;
       case 1:
-        rtnValue = "Monday";
+        rtnValue = "Lun";
         break;
       case 2:
-        rtnValue = "Tuesday";
+        rtnValue = "Mar";
         break;
       case 3:
-        rtnValue = "Wednesday";
+        rtnValue = "Mer";
         break;
       case 4:
-        rtnValue = "Thursday";
+        rtnValue = "Gio";
         break;
       case 5:
-        rtnValue = "Friday";
+        rtnValue = "Ven";
         break;
       case 6:
-        rtnValue = "Saturday";
+        rtnValue = "Sab";
         break;
       default:
         break;

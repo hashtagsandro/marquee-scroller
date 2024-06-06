@@ -170,7 +170,9 @@ String NewsApiClient::cleanText(String text) {
   text.replace("ç", "c");
   text.replace("î", "i");
   text.replace("ï", "i");
+  text.replace("ò", "o");
   text.replace("ô", "o");
+  text.replace("ù", "u");
   text.replace("…", "...");
   text.replace("–", "-");
   text.replace("Â", "A");
